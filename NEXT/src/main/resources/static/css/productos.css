@@ -1,0 +1,82 @@
+/*scroll bar personalizada*/
+::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #a5a5a5;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8a8a8a;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #6e6e6e;
+}
+::-webkit-scrollbar-track {
+  background: #d1d1d1;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+   background: #d1d1d1;
+}
+::-webkit-scrollbar-track:active {
+   background: #d1d1d1;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
+
+
+
+.addProducto {
+	height: 510px;
+    overflow-x: hidden;
+    padding-right: 7px;
+}
+
+
+.formSubClass {
+	height: 0;
+	overflow: hidden;
+	transition: all .3s ease-in-out;
+}
+	
+
+hr {
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+
+
+
+@media screen and (max-width: 992px) {
+    li.previous, li.next {
+    	display: none;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+	.addProducto {
+		height: auto;
+	    padding-right: 0;
+	}
+	
+	#productsTable td {
+		vertical-align: middle;
+	}
+	
+	.dataTables_info {
+		overflow: hidden;
+	}
+}

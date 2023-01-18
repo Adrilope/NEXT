@@ -1,0 +1,79 @@
+body {
+    background-color: #fff!important;
+}
+
+.enlaceGrande {
+	height: 100%;
+}
+
+.btn-group button {
+    background-color: rgb(204, 204, 204);
+}
+
+.btn[disabled] {
+    cursor: default!important;
+}
+
+.btn.cantidad[disabled] {
+    background-color: #eaeaea;
+}
+
+.row.align-items-center.position-relative {
+	border-bottom: 1px solid gainsboro;
+	margin-bottom: 20px;
+}
+
+.eliminar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 20%;
+}
+
+.cero-productos {
+	border-bottom: 1px solid gainsboro;
+}
+
+.row.m-0 {
+    width: 75%;
+}
+
+.text-center.bg-dark {
+    padding: 5px 10px;
+}
+
+.text-center.bg-dark p {
+    margin: 0;
+}
+
+#total {
+    margin-left: 50px;
+}
+
+
+
+@media screen and (max-width: 992px) {
+    .btn-group {
+        width: 40%;
+    }
+    
+	.row.m-0 {
+    	width: 60%;
+	} 
+}
+
+@media screen and (max-width: 767px) {
+    .btn-group {
+        width: 100%;
+    }
+
+    .row.m-0 {
+        width: 100%;
+    }
+    
+    .enlaceGrande {
+    	height: 92%;
+		top: 50px;
+	}
+}
+

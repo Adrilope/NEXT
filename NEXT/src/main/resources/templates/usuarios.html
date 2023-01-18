@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Una web fenomenal">
+    <meta name="author" content="Adrian">
+
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body id="page-top" style="background-color: rgb(255, 255, 255)!important;">
+
+
+  <!-- Header -->
+    <header class="container-fluid fixed-top" id="cabecera">
+        <div class="row">
+            <div class="col-4 col-md-3 col-lg-4 d-flex align-items-center justify-content-between negro" id="header-uno">
+                <a href="" th:href="@{/}">
+                    <img src="../img/logo.png" alt="Logo">
+                </a>
+                <i class="fas fa-bars" onclick="openNav()" style="font-size: 23px;"></i>
+
+                <ul class="nav nav-pills h-100 d-none d-lg-flex" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link d-flex flex-column align-items-center justify-content-center h-100"
+							role="tab" aria-selected="true" href="#" th:href="@{/productos/portatil/1}">
+							<div>Portatiles</div>
+							<i class="fas fa-laptop"></i>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link d-flex flex-column align-items-center justify-content-center h-100"
+							href="#" role="tab" aria-selected="false" th:href="@{/productos/sobremesa/1}">
+							<div>Sobremesa</div>
+							<i class="fas fa-desktop"></i>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link d-flex flex-column align-items-center justify-content-center h-100"
+							href="#" role="tab" aria-selected="false" th:href="@{/productos/componente/1}">
+							<div>Componentes</div>
+							<i class="fas fa-microchip"></i>
+						</a>
+					</li>
+				</ul>
+            </div>
+
+
+            <div class="col-8 col-md-9 col-lg-8 d-flex align-items-center justify-content-between py-1 px-4"
+                id="header-dos">
+                <div class="d-flex align-items-center justify-content-between header-icons">
+                    <div class="d-flex justify-content-center mr-3 p-0" th:if="${#authentication.name} != anonymousUser">
+                        <i class="fas fa-user-circle"></i>
+                        <section class="header-options bg-white">
+                            <a href="" th:href="@{/usuario/perfil}" class="p-2 d-block"><i class="far fa-user mr-3" style="font-size: 20px;"></i>Mi cuenta</a>
+                            <a href="" th:href="@{/favoritos/ver}" class="p-2 d-block"><i class="far fa-heart mr-3" style="font-size: 20px;"></i>Mis listas de deseos</a>
+                            <a th:if="(${#authorization.expression('hasAuthority(''ADMIN'')')})" th:href="@{/admin/usuarios}" class="p-2 d-block"><i class="fas fa-user-cog mr-3" style="font-size: 20px;"></i>Admin Usuarios</a>
+                            <a th:if="(${#authorization.expression('hasAuthority(''ADMIN'')')})" th:href="@{/admin/productos}" class="p-2 d-block"><i class="fas fa-cog mr-3" style="font-size: 20px;"></i>Admin Productos</a>
+                            <a href="" th:href="@{/logout}" class="p-2 d-block"><i class="fas fa-sign-out-alt mr-3" style="font-size: 20px;"></i>Cerrar Sesion</a>
+                        </section>
+                    </div>
+                    
+                    <section class="carrito">
+                    	<a href="" th:href="@{/cart}">
+	                        <i class="fas fa-shopping-cart"></i>
+	                        <div>
+	                            <span th:text="${cantidad}" class="num_productos">0</span>
+	                        </div>
+                        </a>
+                    </section>
+                        
+                    <a th:if="${#authentication.name} == anonymousUser" th:href="@{/login}" class="text-body text-decoration-none btn boton-verde ml-3 ml-md-4 sign-in">
+                        <span class="d-none d-lg-inline-block">Iniciar Sesion</span>
+                        <i class="fas fa-sign-in-alt ml-lg-2" style="font-size: 18px!important;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    
+    <aside>
+        <div id="menu" class="flex-column justify-content-start">
+            <div class="pt-4 pb-4 pl-5">
+            	<a th:href="@{/productos/portatil/1}"><i class="fas fa-laptop mr-3 mb-3"style="font-size:24px;"></i>Portatiles</a>
+            </div>
+            <div class="pb-4 pl-5">
+            	<a href="#" th:href="@{/productos/sobremesa/1}"><i class="fas fa-desktop mr-3 mb-3" style="font-size:24px;"></i>Sobremesa</a>
+            </div>
+            <div class="pl-5">
+            	<a href="#" th:href="@{/productos/componente/1}"><i class="fas fa-microchip mr-3 mb-3" style="font-size:24px;"></i>Componentes</a>
+            </div>
+        </div>
+        <a href="#" onclick="closeNav()" id="transparencia"></a>
+    </aside>
+    
+  
+  	<main class="container margen-top">
+	    <div class="row align-items-start">
+	      <div class="col-12 mt-2">
+				<div th:switch="${#lists.isEmpty(usuarios)}">
+				
+				  <div id="noHayNadie" th:case="true">
+				  		<p>No hay ningun usuario</p>
+				  </div>
+				  
+				  <div id="hayUsuarios" th:case="false">				  
+
+				    <table class="table table-striped">
+				      <thead>
+				      	<tr class="bg-dark text-white">
+					        <th>Nombre de Usuario</th>
+					        <th>Correo</th>
+					        <th>Edad</th>
+					        <th>Rol</th>
+				        </tr>
+				      </thead>
+				      <tr th:each="usuario : ${usuarios}">
+				        <td th:text="${usuario.username}"></td>
+				        <td th:text="${usuario.correo}"></td>
+				        <td th:text="${usuario.edad}"></td>
+				        <td th:text="${usuario.rol.nombre}"></td>  
+				      </tr>
+				    </table>
+				  </div>
+				</div> 
+	      </div>
+    	</div>
+    	<div class="text-right">
+			<a class="btn boton-negro" th:href="@{/}">Volver a Inicio</a>
+		</div>
+    </main>
+        
+  
+	
+
+
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/d618391b43.js" crossorigin="anonymous"></script>
+  <script src="../js/aside.js"></script>
+  <script src="../js/navbar.js"></script>
+</body>
+
+</html>
+
+
+	

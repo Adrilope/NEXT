@@ -1,0 +1,738 @@
+/*****      ESTILOS GENÉRICOS    *********/
+
+body {
+    background-color: rgb(236, 236, 236)!important;
+}
+
+img {
+    width: 100%;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+input:focus {
+    border-color:black!important;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+
+.boton-verde {
+    background-color: rgb(0, 255, 200);
+    border: 1.5px solid rgb(0, 255, 200);
+}
+
+.boton-verde:hover {
+    border: 1.5px solid rgb(0, 255, 200);
+    background-color: white;
+    color: rgb(0, 255, 200)!important;
+}
+
+
+.boton-verde-oscuro {
+    background-color: rgb(0, 196, 147);
+    transition: all 0.2s ease-in-out;
+    color: white;
+}
+
+.boton-verde-oscuro:hover {
+    background-color: rgb(2, 168, 127);
+    color: white;
+}
+
+
+.boton-negro {
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+    transition: all 0.2s ease-in-out;
+}
+
+.boton-negro:hover {
+    background-color: white;
+}
+
+
+.boton-outline-negro {
+    border: 2px solid black;
+    transition: all 0.2s ease-in-out;
+}
+
+.boton-outline-negro:hover {
+    background-color: black;
+    color: white;
+}
+
+
+
+
+/*    ESTILOS NAVBAR     */
+
+header img {
+    width: 65px;
+}
+
+#cabecera {
+    background-color: white;
+    box-shadow: 0 0.23077rem 0.38462rem 0 rgba(0, 0, 0, .25);
+    border-bottom: 3px solid rgb(0, 255, 200);
+    height: 94px;
+}
+
+.negro {
+    background-color: black;
+    color: white;
+}
+
+
+.fa-bars {
+    display: none!important;
+}
+
+.form-inline {
+    width: 68%;
+}
+
+#header-uno {
+    padding-right: 0;
+}
+
+
+.searchnav {
+    height: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 73px; 
+    left: 0; 
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+#mySearchnav , #mySearchnav input {
+    border-radius: 0!important;
+}
+
+#mySearchnav button {
+    background-color: black;
+    color: white;
+}
+
+#mySearchnav button:active {
+    background-color: white;
+    color: black!important;
+    border: 1.5px solid black;
+}
+
+#mySearchnav input {
+    border: 1px solid black;
+}
+
+
+
+.nav-link {
+    color: white!important;
+    border-radius: 0!important;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    background-color: rgb(0, 88, 66);
+}
+
+ul .active {
+    color: black!important;
+    background-color: rgb(0, 196, 147)!important;
+}
+
+
+.header-options {
+    display: none;
+    position: absolute;
+    right: -70px;
+    top: 97px;
+    width: 200px;
+    box-shadow: 0 5px 15px -3px rgba(0,0,0,.23);
+}
+
+.header-options a {
+    text-decoration: none;
+    color: black;
+    transition: 0.3s ease-in-out;
+}
+
+
+.header-options a:hover {
+    background-color: rgb(233, 233, 233);
+}
+
+
+.header-icons {
+    position: absolute;
+    right: 25px;
+    height: 96px;
+    width: auto;
+}
+
+.header-icons > div {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    width: 80px;
+    position: relative;
+    left: 5px;
+}
+
+.header-icons .fa-user-circle {
+    transition: 0.2s;
+}
+
+.header-icons i {
+    font-size: 30px;
+}
+
+.header-icons > div:hover {
+    color: rgb(0, 255, 200);
+}
+
+.header-icons > div:hover > .header-options {
+    display: block;
+}
+
+.header-icons .fa-user-circle {
+    font-size: 35px;
+}
+
+
+.carrito {
+    position: relative;
+}
+
+.carrito a{
+    color: black;
+}
+
+.carrito div {
+    position: absolute;
+    background-color: white;
+    top: -17px;
+    right: -17px;
+    padding: 1.5px;
+    border-radius: 50%;
+}
+
+.num_productos {
+    background-color: rgb(0, 255, 200);
+    border-radius: 50%;
+    padding: 1px 8px;
+}
+
+
+
+
+
+@media screen and (max-width: 1330px) {
+    #header-uno {
+        padding-right: 20px;
+    }
+
+    .fa-bars {
+       display: block!important;
+    }
+
+    .nav-pills {
+        display: none!important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #header-dos .input-group {
+        width: auto!important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #cabecera {
+        height: 73px;
+    }
+    #header-uno {
+        padding: 0 10px;
+    }
+
+    header img {
+        width: 50px;
+    }
+
+    .header-icons {
+        position: absolute;
+        right: 18px;
+    }
+
+    .header-icons i {
+        font-size: 24px;
+    }
+
+    .header-icons .fa-user-circle {
+        font-size: 28px;
+    }
+
+    .header-icons > div {
+        position: initial;
+        width: 35px;
+    }
+
+    .header-options {
+        top: 86px;
+        width: 220px;
+    }
+
+    .header-options i {
+        display: none;
+    }
+
+    .sign-in {
+        padding: 4px 10px;
+        height: 32px;
+    }
+}
+
+
+
+
+
+
+
+/******************  MENU  LATERAL ********************/
+
+#menu {
+    display: none;
+    width: 0%;
+    position: fixed;
+    top: 94px;
+    left: 0;
+    padding: 0px;
+    z-index: 100;
+    background-color:rgb(0, 196, 147);
+    height: 100vh;
+}
+
+
+#menu div a {
+    color: black;
+    transition: 0.3 ease-in-out;
+    text-decoration: none;
+}
+
+#menu div a:hover {
+    color: white;
+}
+
+#transparencia {
+    z-index: 99;
+    width: 0%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.753);
+}
+
+
+@media screen and (max-width: 767px) {
+    #menu {
+        top: 73px;
+    }
+}
+
+
+
+
+
+/*     ESTILOS PAGINAS PRINCIPALES      */
+
+.margen-top {
+	margin-top: 110px;
+}
+
+.principal {
+    padding: 0 90px;
+    transition: 0.5s;
+}
+
+
+.filtros > section {
+	width: 16.5%;
+}
+
+.filtros > section > div {
+    background-color: white;
+}
+
+.filtros h5 {
+    font-size: 1.3vw;
+}
+
+
+.enlace-filtro {
+	display: flex;
+    text-decoration: none;
+    color: rgb(70, 70, 70);
+}
+
+.enlace-filtro {
+	display: flex;
+    color: rgb(70, 70, 70);
+    align-items: center;
+}
+
+.enlace-filtro.activo {
+    color: rgb(0, 196, 147);
+}
+
+.enlace-filtro:hover {
+    color: rgb(0, 196, 147);
+    text-decoration: none;
+}
+
+.icon-unchecked:before {
+  display: inline-block;
+  margin-right: 7px;
+  content: ' ';
+  background-image: url('../img/unchecked.svg');
+  background-size: 14px 14px;
+  height: 14px;
+  width: 14px;
+}
+
+
+.icon-checked:before {
+  display: inline-block;
+  content: ' ';
+  margin-right: 7px;
+  background-image: url('../img/checked.svg');
+  background-size: 14px 14px;
+  height: 14px;
+  width: 14px;
+}
+
+
+.productos hr {
+    margin: auto;
+}
+
+
+
+.producto {
+    width: 100%;
+    height: auto;
+    position: relative;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.producto .cuerpo {
+    display: flex;
+    flex-direction: column;
+}
+
+.producto .imagen {
+    width: 82%;
+    align-self: center;
+}
+
+
+.producto img:not(.imagen) {
+    padding: 10px;
+}
+
+
+.producto > article {
+    border: 1px solid white;
+    position: relative;
+    height: inherit;
+}
+
+.enlaceGrande {
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 88%;
+}
+
+
+
+.producto:hover {
+    box-shadow: 0px 0px 26px -8px rgba(0,0,0,0.3);
+}
+
+
+.producto:hover > article {
+    border: 1px solid gainsboro;
+}
+
+
+
+.attributes {
+	margin-bottom: 15px;
+}
+
+.attributes img {
+	width: 50px;
+}
+
+.attributes .modelo {
+	margin-bottom: 10px;
+	height: 20px;
+	overflow: hidden;
+}
+
+.attributes div {
+	height: 45px;
+	overflow: hidden;
+}
+
+
+.desc-producto a {
+    color: rgb(190, 190, 190);
+    font-size: 22px;
+}
+
+.desc-producto button {
+	font-size: 22px;
+    color: rgb(190, 190, 190);
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0;
+}
+
+
+.desc-producto a:hover, .desc-producto button:hover{
+    color: rgb(0, 196, 147);
+}
+
+
+.list {
+    cursor: pointer;
+    width: fit-content;
+}
+
+.list:hover {
+    color: rgb(0, 196, 147)!important;
+}
+
+
+.actions {
+    position: absolute;
+    top: 98%;
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+    transition: all .2s ease-out 0s;
+    background-color: white;
+    border: 1px solid white;
+    text-align: center;
+}
+
+.actions button {
+    padding: 5px 15px;
+    margin: auto;
+    width: 90%;
+}
+
+
+@media screen and (min-width: 992px) {
+    .producto:hover > .actions{
+        overflow: visible;
+        box-shadow: 0px 15px 18px -6px rgba(0,0,0,0.26);
+        border-bottom: 1px solid gainsboro;
+        border-left: 1px solid gainsboro;
+        border-right: 1px solid gainsboro;
+        z-index: 100;
+        height: auto;
+        padding: 15px 5px;
+    }
+}
+
+
+
+
+#goToTop {
+    position: fixed;
+    right: 30px;
+    bottom: 104px;
+    background-color: rgb(0, 255, 200);
+}
+
+
+.paginacion a {
+    color: #a7a7a7;
+    text-decoration: none;
+}
+
+
+.paginacion button:hover {
+    background-color: rgb(235, 235, 235); 
+    border: 1px solid black!important; 
+}
+
+
+.paginacion button:hover > a {
+    color: black;
+}
+
+
+
+
+@media screen and (max-width: 1330px) {
+	.productos {
+        width: 70%!important;
+    }
+    
+    .principal {
+        padding: 0 25px;
+    }
+
+    .filtros h5 {
+        font-size: 2vw;
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+    .filtros > section {
+		width: 24.5%;
+    }
+    
+}
+
+
+@media screen and (max-width: 767px) {
+    .margen-top {
+        margin-top: 85px;
+    }
+
+    .principal {
+        padding: 0 15px!important;
+    }
+    .productos {
+        width: 90%!important;
+    }
+    
+    .producto img:not(.imagen) {
+    	padding: 6px;
+	}
+    
+    .filtros {
+        display: none;
+        width: 0%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 9000;
+        height: 100vh;
+    }
+
+	.filtros > section {
+		width: inherit;
+	}
+
+    .filtros h5 {
+        font-size: 3.3vw;
+    }
+
+    #transparencia-dos {
+        z-index: -1;
+        width: 0%;
+        top: 0;
+        right: 0;
+        position: fixed;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.753);
+    }
+
+    #goToTop {
+        right: 14px;
+        bottom: 87px;
+    }
+
+    .attributes img {
+	width: 40px;
+	}
+}
+
+
+
+
+
+
+
+/*       ESTILOS FOOTER       */
+
+.pie {
+    border-top: 3px solid black;
+    background-color: rgb(255, 255, 255);
+    margin-top: 90px;
+    box-shadow: 0 -0.23077rem 0.38462rem 0 rgba(0, 0, 0, .25);
+}
+
+.pie > div > div {
+    padding: 1.5rem 3.5rem;
+}
+
+.pie img {
+    width: 8%;
+}
+
+.pie i {
+    font-size: 35px;
+    color: rgb(0, 255, 200);
+    transition: 0.3s;
+}
+
+
+.pie i:hover {
+    transform: scale(1.2);
+}
+
+
+.footer-icons {
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+@media screen and (max-width: 992px) {
+    .pie img {
+        width: 12%;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .pie {
+        margin-top: 40px;
+    }
+
+    .pie img {
+        width: 25%;
+    }
+
+    .pie i {
+        font-size: 30px;
+    }
+
+    .pie > div > div {
+        padding: 1rem 1.5rem;
+    }
+
+    .footer-icons { 
+        width: 130px;
+    }
+}

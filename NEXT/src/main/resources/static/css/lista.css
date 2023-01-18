@@ -1,0 +1,33 @@
+.principal {
+    padding: 0;
+    max-width: 85%;
+}
+
+.modelo {
+    height: 90px;
+}
+
+
+#noHayProductos{
+	padding: 60px 0;
+    margin: auto;
+}
+
+
+
+@media screen and (max-width: 992px) {
+    .principal {
+        max-width: 90%;
+    }
+
+    .modelo {
+        height: 80px;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .principal {
+        max-width: 540px;
+    }
+}

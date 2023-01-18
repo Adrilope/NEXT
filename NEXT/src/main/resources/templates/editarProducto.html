@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/perfil.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Editar Producto</title>
+</head>
+
+<body>
+    <header class="container-fluid fixed-top" id="cabecera">
+        <div class="row">
+            <div class="col-4 col-md-3 col-lg-4 d-flex align-items-center justify-content-between negro" id="header-uno">
+                <a href="" th:href="@{/}">
+                    <img src="../../img/logo.png" alt="Logo">
+                </a>
+                <i class="fas fa-bars" onclick="openNav()" style="font-size: 23px;"></i>
+
+                <ul class="nav nav-pills h-100 d-none d-lg-flex" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link d-flex flex-column align-items-center justify-content-center h-100"
+							role="tab" aria-selected="true" href="#" th:href="@{/productos/portatil/1}">
+							<div>Portatiles</div>
+							<i class="fas fa-laptop"></i>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link d-flex flex-column align-items-center justify-content-center h-100"
+							href="#" role="tab" aria-selected="false" th:href="@{/productos/sobremesa/1}">
+							<div>Sobremesa</div>
+							<i class="fas fa-desktop"></i>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link d-flex flex-column align-items-center justify-content-center h-100"
+							href="#" role="tab" aria-selected="false" th:href="@{/productos/componente/1}">
+							<div>Componentes</div>
+							<i class="fas fa-microchip"></i>
+						</a>
+					</li>
+				</ul>
+            </div>
+
+
+            <div class="col-8 col-md-9 col-lg-8 d-flex align-items-center justify-content-between py-1 px-4" id="header-dos">
+                <div class="d-flex align-items-center justify-content-between header-icons">
+                    <div class="d-flex justify-content-center mr-3 p-0" th:if="${#authentication.name} != anonymousUser">
+                        <i class="fas fa-user-circle"></i>
+                        <section class="header-options bg-white">
+                            <a href="" th:href="@{/usuario/perfil}" class="p-2 d-block"><i class="far fa-user mr-3" style="font-size: 20px;"></i>Mi cuenta</a>
+                            <a href="" th:href="@{/favoritos/ver}" class="p-2 d-block"><i class="far fa-heart mr-3" style="font-size: 20px;"></i>Mis listas de deseos</a>
+                            <a th:if="(${#authorization.expression('hasAuthority(''ADMIN'')')})" th:href="@{/admin/usuarios}" class="p-2 d-block"><i class="fas fa-user-cog mr-3" style="font-size: 20px;"></i>Admin Usuarios</a>
+                            <a th:if="(${#authorization.expression('hasAuthority(''ADMIN'')')})" th:href="@{/admin/productos}" class="p-2 d-block"><i class="fas fa-cog mr-3" style="font-size: 20px;"></i>Admin Productos</a>
+                            <a href="" th:href="@{/logout}" class="p-2 d-block"><i class="fas fa-sign-out-alt mr-3" style="font-size: 20px;"></i>Cerrar Sesion</a>
+                            
+                        </section>
+                    </div>
+                    
+                    <section class="carrito">
+                    	<a href="" th:href="@{/cart}">
+	                        <i class="fas fa-shopping-cart"></i>
+	                        <div>
+	                            <span th:text="${cantidad}" class="num_productos">0</span>
+	                        </div>
+                        </a>
+                    </section>
+                        
+                    <a th:if="${#authentication.name} == anonymousUser" th:href="@{/login}" class="text-body text-decoration-none btn boton-verde ml-3 ml-md-4 sign-in">
+                        <span class="d-none d-lg-inline-block">Iniciar Sesion</span>
+                        <i class="fas fa-sign-in-alt ml-lg-2" style="font-size: 18px!important;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <aside>
+        <div id="menu" class="flex-column justify-content-start">
+            <div class="pt-4 pb-4 pl-5">
+            	<a th:href="@{/productos/portatil/1}"><i class="fas fa-laptop mr-3 mb-3"style="font-size:24px;"></i>Portatiles</a>
+            </div>
+            <div class="pb-4 pl-5">
+            	<a href="#" th:href="@{/productos/sobremesa/1}"><i class="fas fa-desktop mr-3 mb-3" style="font-size:24px;"></i>Sobremesa</a>
+            </div>
+            <div class="pl-5">
+            	<a href="#" th:href="@{/productos/componente/1}"><i class="fas fa-microchip mr-3 mb-3" style="font-size:24px;"></i>Componentes</a>
+            </div>
+        </div>
+        <a href="#" onclick="closeNav()" id="transparencia"></a>
+    </aside>
+
+    <main class="container-fluid principal margen-top mb-4 mb-lg-0">
+        <div class="row align-items-center bg-white mt-5 p-3 px-md-5 py-md-4 datos-personales">
+        	<div class="col-12 col-lg-4 text-center">
+                <img th:src="*{'/mostrarImagen/' + producto.modelo}" id="output"/>
+                <p>Imagen Actual</p>
+            </div>
+            <div class="col-12 col-lg-8">            
+                <h4 class="mt-2 mb-4">DATOS DEL PRODUCTO</h4>
+                <form class="editar-datos" th:action="@{/admin/updateProducto}" method="POST" th:object="${producto}" enctype="multipart/form-data">
+                	<input hidden type="radio" class="form-control" id="tipo" th:value="*{tipo}" th:field="*{tipo}">
+                    <div class="form-row">
+                        <div class="form-group col-12 col-md-6">
+                            <label for="inputMarca">Marca</label>
+                            <input type="text" class="form-control" id="inputMarca" placeholder="Marca" th:field="*{marca}">
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                            <label for="inputModelo">Modelo</label>
+                            <input type="text" class="form-control" id="inputModelo" placeholder="Modelo" th:field="*{modelo}" readonly>
+                        </div>
+                    </div>
+                    <div class="form-row align-items-center">
+                        <div class="form-group col-12 col-md-9">
+                            <label for="input4">Imagen</label>
+                            <div class="custom-file">
+                                <input type="file" name="imagen" class="custom-file-input" id="input4" th:value="*{imagen}" th:field="*{imagen}" aria-describedby="inputGroupFile" onchange="loadFile(event)">
+                                <label class="custom-file-label" for="inputGroupFile" id="image">Cambiar imagen</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-md-3">
+                            <label for="inputPrecio">Precio</label>
+                            <input type="number"  class="form-control" id="inputPrecio" th:field="*{precio}">
+                        </div>
+                    </div>
+                    <div th:if="${producto.tipo} == 'portatil'">
+	                    <div class="form-row">
+	                        <div class="form-group col-12 col-md-6">
+	                            <label for="inputProcesador">Procesador</label>
+	                            <input type="text" class="form-control" id="inputProcesador" placeholder="Procesador" th:field="*{procesador}">
+	                        </div>
+	                        <div class="form-group col-12 col-md-6">
+	                            <label for="inputMarca">Grafica</label>
+	                            <input type="text" class="form-control" id="inputMarca" placeholder="Grafica" th:field="*{grafica}">
+	                        </div>
+	                    </div>
+	                    <div class="form-row">
+	                        <div class="form-group col-12 col-md-6">
+	                            <label for="inputRAM">RAM</label>
+	                            <input type="text" class="form-control" id="inputRAM" placeholder="RAM" th:field="*{ram}">
+	                        </div>
+	                        <div class="form-group col-12 col-md-6">
+	                            <label for="inputAlmacenamiento">Almacenamiento</label>
+	                            <input type="text" class="form-control" id="inputAlmacenamiento" placeholder="Almacenamiento" th:field="*{almacenamiento}">
+	                        </div>
+	                    </div>
+	                    <div class="form-row">
+	                        <div class="form-group col-12 col-md-6">
+	                            <label for="inputTipoPantalla">Tipo de Pantalla</label>
+	                            <input type="text" class="form-control" id="inputTipoPantalla" placeholder="Tipo Pantalla" th:field="*{tipoPantalla}">
+	                        </div>
+	                        <div class="form-group col-12 col-md-6">
+	                            <label for="inputSizePantalla">Tamaño de Pantalla</label>
+	                            <input type="text" class="form-control" id="inputSizePantalla" placeholder="Almacenamiento" th:field="*{sizePantalla}">
+	                        </div>
+	                    </div>
+                    </div>
+                    <div th:if="${producto.tipo} == 'sobremesa'">
+                    	 <div class="form-row">
+	                        <div class="form-group col-12 col-md-6">
+	                            <label for="inputProcesador">Procesador</label>
+	                            <input type="text" class="form-control" id="inputProcesador" placeholder="Procesador" th:field="*{procesadorSobremesa}">
+	                        </div>
+	                        <div class="form-group col-12 col-md-6">
+	                            <label for="inputMarca">Grafica</label>
+	                            <input type="text" class="form-control" id="inputMarca" placeholder="Grafica" th:field="*{graficaSobremesa}">
+	                        </div>
+	                    </div>
+	                    <div class="form-row">
+	                        <div class="form-group col-12 col-md-6">
+	                            <label for="inputRAM">RAM</label>
+	                            <input type="text" class="form-control" id="inputRAM" placeholder="RAM" th:field="*{ramSobremesa}">
+	                        </div>
+	                        <div class="form-group col-12 col-md-6">
+	                            <label for="inputAlmacenamiento">Almacenamiento</label>
+	                            <input type="text" class="form-control" id="inputAlmacenamiento" placeholder="Almacenamiento" th:field="*{almacenamientoSobremesa}">
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+                            <label for="inputSistemaOperativo">Sistema Operativo</label>
+                            <input type="text" class="form-control" id="inputSistemaOperativo" placeholder="Sistema Operativo" th:field="*{sistemaOperativo}">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-end">
+                    	<button type="submit" class="btn boton-verde-oscuro editar mt-3"><a>Editar datos</a></button>
+                    	<a href="" class="btn boton-outline-negro mt-3 ml-md-3 atras" th:href="@{/admin/productos}">Volver atrás</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d618391b43.js" crossorigin="anonymous"></script>
+    <script src="../../js/aside.js"></script>
+    <script src="../../js/navbar.js"></script>
+    <script src="../../js/funciones.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+main a.btn, main button.btn {
+    padding: 10px 14px;
+}
+
+
+.articulo img {
+    width: 66%;
+}
+
+.articulo h3 {
+    border-bottom: 1.5px solid gainsboro;
+    width: 98%;
+}
+
+
+.specs {
+	width: 95%;
+}
+
+
+
+
+
+.bg-verde {
+    background-color: rgb(156, 248, 138);
+}
+
+textarea:focus {
+    border-color: black!important;
+}
+
+.btn-group button {
+    background-color: rgb(204, 204, 204);
+}
+
+.btn.cantidad[disabled] {
+    background-color: #eaeaea;
+}
+
+
+.btn-group button.hover:hover {
+    background-color: rgb(187, 187, 187);
+}
+
+
+.articulo section {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 75px 75px;
+    text-align: center;
+    align-items: center;
+    margin: 42px 0;
+}
+
+
+@media screen and (max-width: 992px) {
+    .articulo img {
+        width: 100%;
+    }
+    
+    .articulo section {
+	    display: grid;
+	    grid-template-columns: 50% 50%;
+	    grid-template-rows: 75px 75px;
+	    text-align: center;
+	    align-items: center;
+	    margin: 20px 0;
+	}
+}
+
+
+@media screen and (max-width: 767px) {
+    .principal .row {
+        margin: auto 0;
+        padding-top: 0!important;
+    }
+
+    .articulo h3 {
+        width: 100%;
+    }
+
+    .articulo section {
+        margin-top: 26px;
+        grid-template-columns: 100%;
+        grid-template-rows: 40px auto 50px auto;
+        align-items: flex-end;
+    }
+
+    .articulo section h6 { 
+        margin-bottom: 5px!important;
+    }
+
+    i.far.fa-heart {
+        margin: 0!important;
+    }
+
+    .media {
+        padding-left: 0!important;
+        padding-right: 0!important;
+    }
+}
+
+
+
+
+
+.linea {
+    background-color: rgb(0, 255, 200);
+    border: 1px solid rgb(0, 255, 200);
+    width: 180px;
+}
+
+
+.opinion {
+    overflow: hidden;
+    height: 0;
+    transition: all .5s ease-in-out;
+}
+
+.publicar {
+    border: 1.5px solid rgb(0, 255, 200);
+}
+
+
+
+.user {
+	margin-right: 12px;
+}
+
+
+
+
+
+
+label.naranja {
+    font-size: 20px;
+    margin: 0;
+}
+
+input.inputPuntuacion, input.rating {
+    display: none;
+}
+
+label.naranja {
+    color: rgb(155, 155, 155);
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+label.rating:hover, label.rating:hover~label.rating {
+    color: orange;
+}
+
+input.inputPuntuacion[type="radio"]:checked~label.puntuacion {
+    color: orange;
+}
+
+input.rating[type="radio"]:checked~label.rating {
+	color: orange;
+}
+
+.criterios {
+    width: 50%;
+}
+
+
+
+@media screen and (max-width: 992px) {
+    .criterios {
+        width: 60%;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .criterios {
+        width: 100%;
+    }
+}
